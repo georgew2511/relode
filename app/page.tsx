@@ -1,12 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -59,14 +62,14 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
       linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
     `,
           backgroundSize: '60px 60px',
-          transform: `translateY(${scrollY * 0.15}px)`,
+          transform: mounted ? `translateY(${scrollY * 0.15}px)` : undefined,
         }}
       />
 
@@ -80,7 +83,9 @@ export default function Home() {
               top: particle.top,
               width: `${particle.size * 2}px`,
               height: `${particle.size * 2}px`,
-              transform: `translateY(${Math.sin((scrollY * particle.speed + particle.id) * 0.05) * 40}px) translateX(${Math.cos((scrollY * particle.speed + particle.id) * 0.03) * 20}px)`,
+              transform: mounted
+                ? `translateY(${Math.sin((scrollY * particle.speed + particle.id) * 0.05) * 40}px) translateX(${Math.cos((scrollY * particle.speed + particle.id) * 0.03) * 20}px)`
+                : undefined,
               opacity: 0.3 + (particle.size * 0.15),
               boxShadow: '0 0 8px rgba(255,255,255,0.4)',
             }}
@@ -89,56 +94,73 @@ export default function Home() {
       </div>
       <div
         className="pointer-events-none absolute -left-60 -top-60 h-[1000px] w-[1000px] rounded-full bg-cyan-400/20 blur-[180px] transition-transform duration-300"
-        style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
+        style={{ transform: mounted ? `translate(${mousePosition.x}px, ${mousePosition.y}px)` : undefined }}
       />
       <div
         className="pointer-events-none absolute -right-60 top-0 h-[1000px] w-[1000px] rounded-full bg-blue-500/60 blur-[120px] transition-transform duration-300"
-        style={{ transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` }}
+        style={{ transform: mounted ? `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` : undefined }}
       />
       <div
         className="pointer-events-none absolute left-1/2 top-20 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-300/10 blur-[120px]"
         style={{
-          transform: `translateX(calc(-50% + ${mousePosition.x * 0.5}px)) translateY(${scrollY * 0.08}px)`,
+          transform: mounted
+            ? `translateX(calc(-50% + ${mousePosition.x * 0.5}px)) translateY(${scrollY * 0.08}px)`
+            : 'translateX(-50%)',
         }}
       />
 
       <nav className="border-b border-slate-800">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div className="text-2xl font-bold">Relode</div>
+          <Image
+            src="/relode-logo-white.png"
+            alt="Relode"
+            width={220}
+            height={50}
+            className="h-12 w-auto"
+            priority
+          />
 
           <div className="hidden gap-8 text-sm text-slate-300 md:flex">
-            <a href="#projects">Projects</a>
+            <a href="#projects">Platform</a>
+            <a href="#api">API</a>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
           </div>
 
-          <button className="rounded-lg border border-slate-700 px-4 py-2 text-sm">
+          <a
+            href="https://portal.relode.io"
+            className="rounded-lg border border-slate-700 px-4 py-2 text-sm"
+          >
             Client Login
-          </button>
+          </a>
         </div>
       </nav>
 
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_65%)]" />
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <div className="mb-6 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-              Instant Quote Technology
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+              <span className="h-2 w-2 rounded-full bg-cyan-400" />
+              Built for Gas Safe engineers
             </div>
 
             <h1 className="text-6xl font-bold leading-tight md:text-7xl">
-              Turn your website into a 24/7 sales machine.
+              Lead generation that works while you sleep.
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl text-slate-300">
-              Relode helps businesses generate instant online quotes, capture more qualified leads and automate their sales process with powerful customer-facing software.
+              Relode gives small and medium heating businesses an online quote calculator that books in surveys, captures leads and takes the admin off your plate — so you spend less time on the phone and more time on the tools.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="rounded-xl bg-blue-600 px-6 py-3 font-medium hover:bg-blue-500">
+              <a
+                href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+                className="rounded-xl bg-blue-600 px-6 py-3 font-medium hover:bg-blue-500"
+              >
                 Try The Quote Calculator
-              </button>
+              </a>
 
               <button className="rounded-xl border border-slate-700 px-6 py-3 font-medium">
                 Book A Demo
@@ -148,15 +170,15 @@ export default function Home() {
             <div className="mt-12 flex gap-10 text-sm text-slate-400">
               <div>
                 <div className="text-3xl font-bold text-white">24/7</div>
-                <div>Automated Quoting</div>
+                <div>Lead Capture</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white">100%</div>
-                <div>Custom Built</div>
+                <div className="text-3xl font-bold text-white">0</div>
+                <div>Missed Calls Chasing Quotes</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white">∞</div>
-                <div>Scalable</div>
+                <div className="text-3xl font-bold text-white">Less</div>
+                <div>Admin, More Jobs Booked</div>
               </div>
             </div>
           </div>
@@ -224,12 +246,12 @@ export default function Home() {
                     </div>
 
                     <div className="flex justify-between border-b border-slate-700 pb-2">
-                      <span>Service Plan</span>
-                      <span className="text-cyan-400">£20/mo</span>
+                      <span>Survey Booked — Tue 10am</span>
+                      <span className="text-cyan-400">Confirmed</span>
                     </div>
 
                     <div className="flex justify-between">
-                      <span>Heat Pump Survey</span>
+                      <span>Photo Survey Submitted</span>
                       <span className="text-cyan-400">New Lead</span>
                     </div>
                   </div>
@@ -247,11 +269,11 @@ export default function Home() {
           </div>
 
           <h2 className="text-5xl font-bold">
-            Experience the quote calculator.
+            See it from your customer's side.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            See exactly how your customers interact with Relode. Fast, simple and built to maximise conversions.
+            This is exactly what your customers see when they land on your site at 9pm wanting a price. No phone call, no waiting for a callback — just a quote and a booked-in survey.
           </p>
         </div>
 
@@ -295,29 +317,100 @@ export default function Home() {
             </div>
 
             <h3 className="text-4xl font-bold">
-              Designed for conversions.
+              Built to win the job, not just the click.
             </h3>
 
             <div className="mt-8 space-y-6">
               <div className="rounded-2xl bg-slate-800 p-5">
                 <div className="text-3xl font-bold">82%</div>
-                <div className="text-slate-400">Average completion rate</div>
+                <div className="text-slate-400">Of customers complete their quote in one sitting</div>
               </div>
 
               <div className="rounded-2xl bg-slate-800 p-5">
                 <div className="text-3xl font-bold">&lt; 2 mins</div>
-                <div className="text-slate-400">Typical completion time</div>
+                <div className="text-slate-400">From "just browsing" to booked-in survey</div>
               </div>
 
               <div className="rounded-2xl bg-slate-800 p-5">
                 <div className="text-3xl font-bold">24/7</div>
-                <div className="text-slate-400">Lead generation even while you sleep</div>
+                <div className="text-slate-400">Quoting and booking jobs while you're on the tools or asleep</div>
               </div>
             </div>
 
-            <button className="mt-8 w-full rounded-xl bg-cyan-500 py-4 font-medium text-slate-950 hover:bg-cyan-400">
+            <a
+              href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+              className="mt-8 block w-full rounded-xl bg-cyan-500 py-4 text-center font-medium text-slate-950 hover:bg-cyan-400"
+            >
               Launch Interactive Demo
-            </button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="api" className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+            Less Admin, More Jobs
+          </div>
+
+          <h2 className="text-5xl font-bold">
+            Surveys booked before you've finished your tea.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
+            Customers can request a survey online, pick a date that suits them, or send photos of their existing setup straight away — no back-and-forth, no chasing.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-xl shadow-cyan-500/5">
+            <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-950/60 px-6 py-4">
+              <div className="h-3 w-3 rounded-full bg-red-500" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-green-500" />
+              <span className="ml-3 text-xs text-slate-500">New Job Notification</span>
+            </div>
+            <div className="p-6 text-sm leading-relaxed text-slate-300">
+              <div className="mb-3 flex items-center justify-between">
+                <span className="font-semibold text-white">📸 Photo Survey Received</span>
+                <span className="text-slate-500">2 mins ago</span>
+              </div>
+              <div className="space-y-1 text-slate-400">
+                <div>Mrs. Patterson — GU1 3AB</div>
+                <div>4 photos of existing boiler &amp; pipework attached</div>
+                <div>Preferred date: Thursday AM</div>
+              </div>
+              <div className="mt-4 rounded-lg bg-slate-800 px-3 py-2 text-cyan-400">
+                Booked straight into your calendar — no admin needed
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-4 text-sm font-medium text-cyan-400">
+              HOW IT TAKES THE LOAD OFF
+            </div>
+
+            <h3 className="text-4xl font-bold">
+              Built around how engineers actually work.
+            </h3>
+
+            <div className="mt-8 space-y-6">
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Online Survey Requests</div>
+                <div className="text-slate-400">Customers request a survey from your site, with their details ready and waiting for you.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Self-Service Booking</div>
+                <div className="text-slate-400">Customers pick a date and time that suits them straight from your availability — no diary tennis.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Photo Surveys</div>
+                <div className="text-slate-400">Customers upload photos of their boiler and pipework so you can scope the job before you even arrive.</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -325,15 +418,15 @@ export default function Home() {
       <section id="projects" className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-            Featured Projects
+            For Heating Engineers
           </div>
 
           <h2 className="text-5xl font-bold">
-            Software built to generate more leads.
+            Software that fills your diary, not your inbox.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            Every Relode platform is designed around one goal: helping businesses capture more enquiries, automate more processes and increase revenue.
+            Built for small and medium Gas Safe businesses who'd rather be on a job than on the phone chasing quotes.
           </p>
         </div>
 
@@ -350,13 +443,13 @@ export default function Home() {
                 </h3>
 
                 <p className="mt-6 text-lg text-slate-400">
-                  Allow customers to receive fixed-price boiler quotes online in minutes without requiring a home survey.
+                  Give customers a fixed-price boiler quote online in minutes, then let them book their own survey — fewer wasted calls, more jobs in the diary.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   <span className="rounded-full bg-slate-800 px-3 py-2 text-sm">Instant Pricing</span>
-                  <span className="rounded-full bg-slate-800 px-3 py-2 text-sm">Lead Capture</span>
-                  <span className="rounded-full bg-slate-800 px-3 py-2 text-sm">CRM Integration</span>
+                  <span className="rounded-full bg-slate-800 px-3 py-2 text-sm">Survey Booking</span>
+                  <span className="rounded-full bg-slate-800 px-3 py-2 text-sm">Photo Surveys</span>
                 </div>
               </div>
 
@@ -388,25 +481,25 @@ export default function Home() {
               </div>
 
               <h3 className="text-2xl font-bold">
-                Service Plan Platform
+                Boiler Service Plans
               </h3>
 
               <p className="mt-4 text-slate-400">
-                Sell, manage and renew recurring service plans with automated payments and customer self-service.
+                Sell and renew annual service plans online with automated payments, so customers come back to you every year without you lifting a finger.
               </p>
             </div>
 
             <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
               <div className="mb-3 text-sm font-medium text-cyan-400">
-                CUSTOM DEVELOPMENT
+                ZERO ADMIN BOOKING
               </div>
 
               <h3 className="text-2xl font-bold">
-                Bespoke Business Software
+                Survey &amp; Job Booking
               </h3>
 
               <p className="mt-4 text-slate-400">
-                Tailor-made systems built around your workflows, team and customer journey.
+                Customers request a survey, book a date and submit photos of their existing system — it lands in your calendar ready to go.
               </p>
             </div>
           </div>
@@ -416,15 +509,15 @@ export default function Home() {
       <section id="features" className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-            Why Businesses Choose Relode
+            Why Engineers Choose Relode
           </div>
 
           <h2 className="text-5xl font-bold">
-            Built to increase conversions.
+            More jobs booked, less admin done.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            Every feature is designed to help businesses capture more leads, automate more admin and create a better customer experience.
+            Every feature is designed to win you more work and cut the hours you spend on quoting, chasing and paperwork.
           </p>
         </div>
 
@@ -435,27 +528,27 @@ export default function Home() {
             </div>
             <h3 className="text-xl font-bold">Instant Online Pricing</h3>
             <p className="mt-3 text-slate-400">
-              Give customers prices instantly without waiting for a phone call or survey.
+              Customers get a fixed-price boiler quote in seconds, day or night, so you stop losing jobs to whoever calls back first.
             </p>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
             <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
-              📈
+              📅
             </div>
-            <h3 className="text-xl font-bold">Higher Conversion Rates</h3>
+            <h3 className="text-xl font-bold">Self-Service Survey Booking</h3>
             <p className="mt-3 text-slate-400">
-              Optimised customer journeys designed to convert more visitors into enquiries.
+              Customers pick a survey date straight from your availability — no diary tennis over text or voicemail.
             </p>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
             <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
-              🔐
+              📸
             </div>
-            <h3 className="text-xl font-bold">Licensing Control</h3>
+            <h3 className="text-xl font-bold">Photo Surveys</h3>
             <p className="mt-3 text-slate-400">
-              Manage subscriptions, customer access and recurring revenue from one platform.
+              Customers send photos of their boiler and pipework upfront, so you can scope and price the job before you've even left the van.
             </p>
           </div>
 
@@ -463,9 +556,9 @@ export default function Home() {
             <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
               🔄
             </div>
-            <h3 className="text-xl font-bold">CRM Integrations</h3>
+            <h3 className="text-xl font-bold">No More Chasing Leads</h3>
             <p className="mt-3 text-slate-400">
-              Connect seamlessly with your CRM, automation tools and existing systems.
+              Every enquiry, survey and booking lands in one place, so nothing slips through the cracks and no lead goes cold.
             </p>
           </div>
         </div>
@@ -474,15 +567,15 @@ export default function Home() {
       <section id="process" className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-            How Relode Works
+            How It Works
           </div>
 
           <h2 className="text-5xl font-bold">
-            Everything you need to generate more leads.
+            From quote to job, with no admin in between.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            Relode gives businesses the tools to capture more enquiries, automate customer journeys and create recurring revenue streams.
+            Relode handles the bit between "I'm interested" and "you're on site" — so you can focus on the install, not the inbox.
           </p>
         </div>
 
@@ -491,19 +584,29 @@ export default function Home() {
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-lg font-bold text-slate-950">
               ⚡
             </div>
-            <h3 className="text-2xl font-bold">Instant Quote Calculators</h3>
+            <h3 className="text-2xl font-bold">Instant Quote</h3>
             <p className="mt-4 text-slate-400">
-              Allow customers to receive prices online instantly while capturing high-quality leads 24/7.
+              Customers get a fixed price online instantly, 24/7, without needing to speak to you first.
             </p>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-lg font-bold text-slate-950">
-              👤
+              📅
             </div>
-            <h3 className="text-2xl font-bold">Customer Portals</h3>
+            <h3 className="text-2xl font-bold">Survey Booked Online</h3>
             <p className="mt-4 text-slate-400">
-              Give customers access to quotes, documents, subscriptions and account information in one place.
+              They pick a date that works for both of you, straight into your calendar.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-lg font-bold text-slate-950">
+              📸
+            </div>
+            <h3 className="text-2xl font-bold">Photos Submitted</h3>
+            <p className="mt-4 text-slate-400">
+              Photos of the existing boiler and pipework land with you before you've even set off.
             </p>
           </div>
 
@@ -511,19 +614,9 @@ export default function Home() {
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-lg font-bold text-slate-950">
               💳
             </div>
-            <h3 className="text-2xl font-bold">Service Plan Management</h3>
+            <h3 className="text-2xl font-bold">Service Plans Renewed</h3>
             <p className="mt-4 text-slate-400">
-              Create recurring revenue with automated subscriptions, renewals and payment collection.
-            </p>
-          </div>
-
-          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-lg font-bold text-slate-950">
-              🔄
-            </div>
-            <h3 className="text-2xl font-bold">CRM & Automation</h3>
-            <p className="mt-4 text-slate-400">
-              Connect seamlessly with your existing systems to automate follow-ups, workflows and reporting.
+              Customers stay on the books year after year with automated renewals and payments.
             </p>
           </div>
         </div>
@@ -532,28 +625,28 @@ export default function Home() {
       <section id="pricing" className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-            Flexible Pricing
+            Plans For Heating Engineers
           </div>
 
           <h2 className="text-5xl font-bold">
-            Start small. Scale as you grow.
+            Start small. Scale as your business grows.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            Whether you need a simple quote calculator or a complete customer platform, Relode grows with your business.
+            Whether you're a one-man band or running a small team, there's a plan that pays for itself in your first booked job.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <div className="text-sm font-medium text-cyan-400">STARTER</div>
+            <div className="text-sm font-medium text-cyan-400">SOLO ENGINEER</div>
             <h3 className="mt-3 text-3xl font-bold">Quote Calculator</h3>
             <div className="mt-6 text-5xl font-bold">£99</div>
             <div className="text-slate-400">per month</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
-              <li>✓ Instant online quotes</li>
-              <li>✓ Lead capture forms</li>
+              <li>✓ Instant online boiler quotes</li>
+              <li>✓ Online survey requests</li>
               <li>✓ Hosted by Relode</li>
               <li>✓ Monthly updates</li>
             </ul>
@@ -568,16 +661,16 @@ export default function Home() {
               MOST POPULAR
             </div>
 
-            <div className="text-sm font-medium text-cyan-400">GROWTH</div>
-            <h3 className="mt-3 text-3xl font-bold">Business Platform</h3>
+            <div className="text-sm font-medium text-cyan-400">GROWING TEAM</div>
+            <h3 className="mt-3 text-3xl font-bold">Booking &amp; Plans</h3>
             <div className="mt-6 text-5xl font-bold">£299</div>
             <div className="text-slate-400">per month</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
-              <li>✓ Everything in Starter</li>
-              <li>✓ Customer accounts</li>
-              <li>✓ CRM integrations</li>
-              <li>✓ Service plan management</li>
+              <li>✓ Everything in Solo Engineer</li>
+              <li>✓ Self-service survey booking</li>
+              <li>✓ Photo surveys</li>
+              <li>✓ Service plan renewals</li>
               <li>✓ Priority support</li>
             </ul>
 
@@ -587,16 +680,16 @@ export default function Home() {
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <div className="text-sm font-medium text-cyan-400">ENTERPRISE</div>
-            <h3 className="mt-3 text-3xl font-bold">Bespoke Software</h3>
+            <div className="text-sm font-medium text-cyan-400">MULTI-ENGINEER</div>
+            <h3 className="mt-3 text-3xl font-bold">Bespoke Platform</h3>
             <div className="mt-6 text-5xl font-bold">Custom</div>
             <div className="text-slate-400">tailored pricing</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
-              <li>✓ Fully bespoke platform</li>
+              <li>✓ Multiple engineer diaries</li>
               <li>✓ Custom integrations</li>
               <li>✓ White-label options</li>
-              <li>✓ Dedicated development</li>
+              <li>✓ Dedicated support</li>
             </ul>
 
             <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
@@ -610,18 +703,18 @@ export default function Home() {
         <div className="rounded-[32px] border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-12">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-              Built For Growth
+              Built For Engineers
             </div>
 
             <h2 className="text-5xl font-bold">
-              Everything you need to scale.
+              Everything you need to grow without the grind.
             </h2>
           </div>
 
           <div className="grid gap-8 text-center md:grid-cols-4">
             <div>
               <div className="text-5xl font-bold text-cyan-400">24/7</div>
-              <div className="mt-3 text-slate-400">Lead Capture</div>
+              <div className="mt-3 text-slate-400">Quoting While You Sleep</div>
             </div>
 
             <div>
@@ -630,13 +723,13 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-5xl font-bold text-cyan-400">∞</div>
-              <div className="mt-3 text-slate-400">Unlimited Scalability</div>
+              <div className="text-5xl font-bold text-cyan-400">Zero</div>
+              <div className="mt-3 text-slate-400">Survey-Booking Admin</div>
             </div>
 
             <div>
-              <div className="text-5xl font-bold text-cyan-400">MRR</div>
-              <div className="mt-3 text-slate-400">Recurring Revenue Ready</div>
+              <div className="text-5xl font-bold text-cyan-400">Repeat</div>
+              <div className="mt-3 text-slate-400">Customers Via Service Plans</div>
             </div>
           </div>
         </div>
@@ -644,7 +737,7 @@ export default function Home() {
 
       <section id="contact" className="mx-auto max-w-7xl px-6 py-32">
         <div className="relative overflow-hidden rounded-[40px] border border-cyan-500/20 bg-gradient-to-r from-blue-600 to-cyan-500 p-16 text-slate-950">
-          <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
 
           <div className="relative max-w-3xl">
             <div className="mb-4 inline-flex rounded-full bg-white/20 px-4 py-2 text-sm font-medium">
@@ -652,11 +745,11 @@ export default function Home() {
             </div>
 
             <h2 className="text-6xl font-bold leading-tight">
-              Ready to see Relode in action?
+              Stop chasing quotes. Start booking jobs.
             </h2>
 
             <p className="mt-6 text-xl text-slate-900/80">
-              Book a personalised demo and discover how instant quoting, customer portals and automated workflows can help your business generate more leads and close more sales.
+              Book a personalised demo and see how instant quoting, online survey booking and photo surveys can win you more boiler installs with a lot less admin.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -664,9 +757,12 @@ export default function Home() {
                 Book Your Demo
               </button>
 
-              <button className="rounded-xl border border-slate-900/20 px-8 py-4 font-medium">
+              <a
+                href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+                className="rounded-xl border border-slate-900/20 px-8 py-4 font-medium"
+              >
                 Try The Quote Calculator
-              </button>
+              </a>
             </div>
           </div>
         </div>
