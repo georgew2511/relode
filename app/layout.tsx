@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Relode — Quoting & Booking for Gas Safe Engineers",
+  title: "Boiler Quotes & Installation Software for Gas Safe Engineers | Relode",
   description: "Instant boiler quotes, online survey booking and photo surveys that win heating engineers more jobs with less admin.",
 };
 
