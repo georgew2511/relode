@@ -633,26 +633,27 @@ export default function Home() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
-            Whether you're a one-man band or running a small team, there's a plan that pays for itself in your first booked job.
+            Priced on leads, not headcount — every plan includes unlimited staff logins, so adding an extra pair of hands never costs you more.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-4">
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <div className="text-sm font-medium text-cyan-400">SOLO ENGINEER</div>
-            <h3 className="mt-3 text-3xl font-bold">Quote Calculator</h3>
-            <div className="mt-6 text-5xl font-bold">£99</div>
+            <div className="text-sm font-medium text-cyan-400">STARTER</div>
+            <h3 className="mt-3 text-2xl font-bold">Quote Calculator</h3>
+            <div className="mt-6 text-5xl font-bold">£29</div>
             <div className="text-slate-400">per month</div>
+            <div className="mt-2 text-sm text-cyan-300">Up to 30 leads/month</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
               <li>✓ Instant online boiler quotes</li>
               <li>✓ Online survey requests</li>
+              <li>✓ Unlimited staff logins</li>
               <li>✓ Hosted by Relode</li>
-              <li>✓ Monthly updates</li>
             </ul>
 
             <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
-              Get Started
+              Start Free For 14 Days
             </button>
           </div>
 
@@ -661,32 +662,52 @@ export default function Home() {
               MOST POPULAR
             </div>
 
-            <div className="text-sm font-medium text-cyan-400">GROWING TEAM</div>
-            <h3 className="mt-3 text-3xl font-bold">Booking &amp; Plans</h3>
-            <div className="mt-6 text-5xl font-bold">£299</div>
+            <div className="text-sm font-medium text-cyan-400">GROWTH</div>
+            <h3 className="mt-3 text-2xl font-bold">Booking &amp; Plans</h3>
+            <div className="mt-6 text-5xl font-bold">£49</div>
             <div className="text-slate-400">per month</div>
+            <div className="mt-2 text-sm text-cyan-300">Up to 75 leads/month</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
-              <li>✓ Everything in Solo Engineer</li>
+              <li>✓ Everything in Starter</li>
               <li>✓ Self-service survey booking</li>
               <li>✓ Photo surveys</li>
-              <li>✓ Service plan renewals</li>
               <li>✓ Priority support</li>
             </ul>
 
             <button className="mt-8 w-full rounded-xl bg-cyan-500 py-3 font-medium text-slate-950">
-              Book A Demo
+              Start Free For 14 Days
             </button>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <div className="text-sm font-medium text-cyan-400">MULTI-ENGINEER</div>
-            <h3 className="mt-3 text-3xl font-bold">Bespoke Platform</h3>
-            <div className="mt-6 text-5xl font-bold">Custom</div>
-            <div className="text-slate-400">tailored pricing</div>
+            <div className="text-sm font-medium text-cyan-400">PRO</div>
+            <h3 className="mt-3 text-2xl font-bold">Established Business</h3>
+            <div className="mt-6 text-5xl font-bold">£79</div>
+            <div className="text-slate-400">per month</div>
+            <div className="mt-2 text-sm text-cyan-300">Up to 200 leads/month</div>
 
             <ul className="mt-8 space-y-3 text-slate-300">
+              <li>✓ Everything in Growth</li>
               <li>✓ Multiple engineer diaries</li>
+              <li>✓ Branding &amp; colour customisation</li>
+              <li>✓ Priority support</li>
+            </ul>
+
+            <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
+              Start Free For 14 Days
+            </button>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="text-sm font-medium text-cyan-400">SCALE</div>
+            <h3 className="mt-3 text-2xl font-bold">Bespoke Platform</h3>
+            <div className="mt-6 text-5xl font-bold">Custom</div>
+            <div className="text-slate-400">tailored pricing</div>
+            <div className="mt-2 text-sm text-cyan-300">Unlimited leads</div>
+
+            <ul className="mt-8 space-y-3 text-slate-300">
+              <li>✓ Unlimited leads &amp; engineers</li>
               <li>✓ Custom integrations</li>
               <li>✓ White-label options</li>
               <li>✓ Dedicated support</li>
@@ -696,6 +717,15 @@ export default function Home() {
               Speak To Us
             </button>
           </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6 text-center text-slate-300">
+          <p>
+            <span className="font-semibold text-cyan-300">Service Plans add-on</span> — let customers sign up online for annual boiler cover with their own Direct Debit, from <span className="font-semibold text-white">+£15/month</span> on any plan.
+          </p>
+          <p className="mt-2 text-sm text-slate-400">
+            No card required for your 14-day trial. Pay annually and get 2 months free. If you go over your lead allowance we'll let you know and make upgrading take one click — we never cut you off mid-month.
+          </p>
         </div>
       </section>
 
