@@ -122,10 +122,11 @@ export default function Home() {
 
           <div className="hidden gap-8 text-sm text-slate-300 md:flex">
             <a href="#projects">Platform</a>
-            <a href="#api">API</a>
+            <a href="#crm">CRM</a>
+            <a href="#insights">Insights</a>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
-            <a href="#contact">Contact</a>
+            <a href="/contact">Contact</a>
           </div>
 
           <a
@@ -151,7 +152,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl text-slate-300">
-              Relode gives small and medium heating businesses an online quote calculator that books in surveys, captures leads and takes the admin off your plate — so you spend less time on the phone and more time on the tools.
+              Relode gives small and medium heating businesses an online quote calculator that books in surveys, captures leads and takes the admin off your plate — with a built-in CRM so you always know exactly where every job stands.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -162,9 +163,12 @@ export default function Home() {
                 Try The Quote Calculator
               </a>
 
-              <button className="rounded-xl border border-slate-700 px-6 py-3 font-medium">
+              <a
+                href="/contact"
+                className="rounded-xl border border-slate-700 px-6 py-3 font-medium hover:bg-slate-900"
+              >
                 Book A Demo
-              </button>
+              </a>
             </div>
 
             <div className="mt-12 flex gap-10 text-sm text-slate-400">
@@ -278,37 +282,20 @@ export default function Home() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-xl shadow-cyan-500/5">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-sm text-cyan-400">Demo Quote Calculator</span>
-              <span className="rounded-full bg-slate-800 px-3 py-1 text-xs">Step 1 of 6</span>
+          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-xl shadow-cyan-500/5">
+            <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-900 px-6 py-4">
+              <div className="h-3 w-3 rounded-full bg-red-500" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-green-500" />
+              <span className="ml-3 text-xs text-slate-500">Live Demo · Quote Calculator</span>
             </div>
 
-            <div className="mb-6 h-2 rounded-full bg-slate-800">
-              <div className="h-2 w-1/6 rounded-full bg-cyan-400" />
-            </div>
-
-            <h3 className="text-3xl font-bold">
-              What type of boiler do you currently have?
-            </h3>
-
-            <div className="mt-8 space-y-4">
-              <button className="w-full rounded-2xl border border-slate-700 p-5 text-left transition-all hover:border-cyan-500 hover:bg-slate-800">
-                Combi Boiler
-              </button>
-
-              <button className="w-full rounded-2xl border border-slate-700 p-5 text-left transition-all hover:border-cyan-500 hover:bg-slate-800">
-                System Boiler
-              </button>
-
-              <button className="w-full rounded-2xl border border-slate-700 p-5 text-left transition-all hover:border-cyan-500 hover:bg-slate-800">
-                Regular Boiler
-              </button>
-
-              <button className="w-full rounded-2xl border border-slate-700 p-5 text-left transition-all hover:border-cyan-500 hover:bg-slate-800">
-                I'm Not Sure
-              </button>
-            </div>
+            <iframe
+              src="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+              title="Relode Quote Calculator Demo"
+              className="h-[640px] w-full border-0 bg-slate-950"
+              loading="lazy"
+            />
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
@@ -339,9 +326,11 @@ export default function Home() {
 
             <a
               href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 block w-full rounded-xl bg-cyan-500 py-4 text-center font-medium text-slate-950 hover:bg-cyan-400"
             >
-              Launch Interactive Demo
+              Open Full Screen ↗
             </a>
           </div>
         </div>
@@ -506,6 +495,206 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="crm" className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+            New: Built-In CRM
+          </div>
+
+          <h2 className="text-5xl font-bold">
+            Run it like a real business, not a notebook by the kettle.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
+            No more whiteboard, no more sticky notes, no more trying to remember who you said you'd call back. Every lead lands in one pipeline — drag it from enquiry to fitted boiler, and see how the whole business is doing the moment you open the app.
+          </p>
+        </div>
+
+        {/* Dashboard snapshot */}
+        <div className="mb-8 rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-xl shadow-cyan-500/5">
+          <div className="mb-5 flex items-center justify-between">
+            <span className="text-sm font-medium text-cyan-400">YOUR BUSINESS, AT A GLANCE</span>
+            <span className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-400">This month</span>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="rounded-2xl bg-slate-950/60 p-4">
+              <div className="text-xs text-slate-400">New Leads</div>
+              <div className="mt-2 text-3xl font-bold">23</div>
+              <div className="mt-1 text-xs font-medium text-emerald-400">↑ 18% vs last month</div>
+            </div>
+            <div className="rounded-2xl bg-slate-950/60 p-4">
+              <div className="text-xs text-slate-400">Conversion Rate</div>
+              <div className="mt-2 text-3xl font-bold">42%</div>
+              <div className="mt-1 text-xs text-slate-500">9 won · 12 lost</div>
+            </div>
+            <div className="rounded-2xl bg-slate-950/60 p-4">
+              <div className="text-xs text-slate-400">Pipeline Value</div>
+              <div className="mt-2 text-3xl font-bold">£26,290</div>
+              <div className="mt-1 text-xs text-slate-500">Across 14 active leads</div>
+            </div>
+            <div className="rounded-2xl bg-slate-950/60 p-4">
+              <div className="text-xs text-slate-400">Revenue Won</div>
+              <div className="mt-2 text-3xl font-bold">£11,420</div>
+              <div className="mt-1 text-xs font-medium text-emerald-400">↑ 9% vs last month</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-xl shadow-cyan-500/5">
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {[
+                { label: 'New Lead', count: 6, color: 'bg-slate-700 text-slate-200' },
+                { label: 'Survey Booked', count: 3, color: 'bg-blue-500/20 text-blue-300' },
+                { label: 'Quote Accepted', count: 2, color: 'bg-emerald-500/20 text-emerald-300' },
+                { label: 'Installed', count: 4, color: 'bg-cyan-500/20 text-cyan-300' },
+              ].map((col) => (
+                <div key={col.label} className="w-44 flex-shrink-0 rounded-2xl bg-slate-950/60 p-3">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className={`rounded-full px-2 py-1 text-xs font-semibold ${col.color}`}>{col.label}</span>
+                    <span className="text-xs text-slate-500">{col.count}</span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="rounded-xl border-l-4 border-cyan-500 bg-slate-900 p-3">
+                      <div className="text-sm font-semibold">Mrs. Patterson</div>
+                      <div className="text-xs text-slate-500">Combi · £3,250</div>
+                      <div className="mt-2 flex gap-1 text-xs">
+                        <span className="rounded bg-slate-800 px-1.5 py-0.5">📞</span>
+                        <span className="rounded bg-slate-800 px-1.5 py-0.5">✉️</span>
+                      </div>
+                    </div>
+                    <div className="rounded-xl border-l-4 border-slate-700 bg-slate-900 p-3 opacity-60">
+                      <div className="text-sm font-semibold">J. Carter</div>
+                      <div className="text-xs text-slate-500">System · £2,890</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-4 text-sm font-medium text-cyan-400">
+              NEVER LOSE A LEAD AGAIN
+            </div>
+
+            <h3 className="text-4xl font-bold">
+              Built for engineers who'd rather be on a job than doing admin.
+            </h3>
+
+            <div className="mt-8 space-y-6">
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">📊 Real-Time Business Snapshot</div>
+                <div className="text-slate-400">New leads, conversion rate, pipeline value and revenue won — updated live, so you always know how the month's going.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">⏰ Stale Lead Alerts</div>
+                <div className="text-slate-400">Get flagged the moment a lead's gone quiet for 5+ days, so nobody falls through the cracks.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">📞 One-Tap Follow-Up</div>
+                <div className="text-slate-400">Call, text or email a lead straight from their card — no digging through old messages or your call log.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">❌ Lost-Reason Tracking</div>
+                <div className="text-slate-400">See why jobs are slipping away — price, timing, went elsewhere — so you can fix what's actually costing you work.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="insights" className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+            New: Business Insights
+          </div>
+
+          <h2 className="text-5xl font-bold">
+            Know exactly where your business stands.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
+            See your conversion rate, your best lead sources and your real revenue — broken down by day, week or month, not guesswork.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-4 text-sm font-medium text-cyan-400">
+              SPEND LESS TIME GUESSING
+            </div>
+
+            <h3 className="text-4xl font-bold">
+              See which marketing actually pays for itself.
+            </h3>
+
+            <div className="mt-8 space-y-6">
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Conversion Rate, By Source</div>
+                <div className="text-slate-400">Find out whether Google Ads, Checkatrade or referrals are actually winning you jobs — not just clicks.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Pipeline &amp; Revenue Value</div>
+                <div className="text-slate-400">See exactly how much work is sitting in your pipeline, and how much you've actually won this month.</div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="text-lg font-bold">Any Date Range You Like</div>
+                <div className="text-slate-400">Last 7 days, this month, last month, or a custom range — slice your numbers however you need to.</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-xl shadow-cyan-500/5">
+            <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-950/60 px-6 py-4">
+              <div className="h-3 w-3 rounded-full bg-red-500" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-green-500" />
+              <span className="ml-3 text-xs text-slate-500">Analytics — Last 30 days</span>
+            </div>
+            <div className="grid grid-cols-3 divide-x divide-slate-800 border-b border-slate-800">
+              <div className="p-5 text-center">
+                <div className="text-2xl font-bold">34%</div>
+                <div className="mt-1 text-xs text-slate-400">Conv. to Survey</div>
+              </div>
+              <div className="p-5 text-center">
+                <div className="text-2xl font-bold">42%</div>
+                <div className="mt-1 text-xs text-slate-400">Conv. to Sale</div>
+              </div>
+              <div className="p-5 text-center">
+                <div className="text-2xl font-bold">£26,290</div>
+                <div className="mt-1 text-xs text-slate-400">Pipeline Value</div>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="mb-3 text-sm font-semibold text-slate-300">Lead Sources</div>
+              <div className="space-y-3">
+                {[
+                  { label: 'Google Ads', pct: 76 },
+                  { label: 'Organic Website', pct: 52 },
+                  { label: 'Trade Initiative', pct: 24 },
+                ].map((row) => (
+                  <div key={row.label}>
+                    <div className="mb-1 flex justify-between text-xs text-slate-400">
+                      <span>{row.label}</span>
+                      <span>{row.pct}%</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-slate-800">
+                      <div className="h-2 rounded-full bg-cyan-400" style={{ width: `${row.pct}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="features" className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
@@ -521,7 +710,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
             <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
               ⚡
@@ -559,6 +748,26 @@ export default function Home() {
             <h3 className="text-xl font-bold">No More Chasing Leads</h3>
             <p className="mt-3 text-slate-400">
               Every enquiry, survey and booking lands in one place, so nothing slips through the cracks and no lead goes cold.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
+              🗂️
+            </div>
+            <h3 className="text-xl font-bold">Lead Pipeline &amp; CRM</h3>
+            <p className="mt-3 text-slate-400">
+              Drag every job from enquiry to fitted boiler, with stale-lead alerts so a quiet customer never gets forgotten.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-3xl">
+              📊
+            </div>
+            <h3 className="text-xl font-bold">Business Insights</h3>
+            <p className="mt-3 text-slate-400">
+              See your conversion rate, best lead sources and real revenue won — by day, week, month or any custom range.
             </p>
           </div>
         </div>
@@ -648,13 +857,17 @@ export default function Home() {
             <ul className="mt-8 space-y-3 text-slate-300">
               <li>✓ Instant online boiler quotes</li>
               <li>✓ Online survey requests</li>
+              <li>✓ Lead pipeline &amp; CRM</li>
               <li>✓ Unlimited staff logins</li>
               <li>✓ Hosted by Relode</li>
             </ul>
 
-            <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
+            <a
+              href="https://portal.relode.io/signup"
+              className="mt-8 block w-full rounded-xl border border-slate-700 py-3 text-center hover:bg-slate-800"
+            >
               Start Free For 14 Days
-            </button>
+            </a>
           </div>
 
           <div className="relative rounded-3xl border border-cyan-500 bg-slate-900 p-8 shadow-2xl shadow-cyan-500/10">
@@ -672,12 +885,16 @@ export default function Home() {
               <li>✓ Everything in Starter</li>
               <li>✓ Self-service survey booking</li>
               <li>✓ Photo surveys</li>
+              <li>✓ Business insights &amp; analytics</li>
               <li>✓ Priority support</li>
             </ul>
 
-            <button className="mt-8 w-full rounded-xl bg-cyan-500 py-3 font-medium text-slate-950">
+            <a
+              href="https://portal.relode.io/signup"
+              className="mt-8 block w-full rounded-xl bg-cyan-500 py-3 text-center font-medium text-slate-950 hover:bg-cyan-400"
+            >
               Start Free For 14 Days
-            </button>
+            </a>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
@@ -694,9 +911,12 @@ export default function Home() {
               <li>✓ Priority support</li>
             </ul>
 
-            <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
+            <a
+              href="https://portal.relode.io/signup"
+              className="mt-8 block w-full rounded-xl border border-slate-700 py-3 text-center hover:bg-slate-800"
+            >
               Start Free For 14 Days
-            </button>
+            </a>
           </div>
 
           <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
@@ -713,9 +933,12 @@ export default function Home() {
               <li>✓ Dedicated support</li>
             </ul>
 
-            <button className="mt-8 w-full rounded-xl border border-slate-700 py-3">
+            <a
+              href="/contact"
+              className="mt-8 block w-full rounded-xl border border-slate-700 py-3 text-center hover:bg-slate-800"
+            >
               Speak To Us
-            </button>
+            </a>
           </div>
         </div>
 
@@ -779,13 +1002,16 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 text-xl text-slate-900/80">
-              Book a personalised demo and see how instant quoting, online survey booking and photo surveys can win you more boiler installs with a lot less admin.
+              Book a personalised demo and see how instant quoting, online survey booking, photo surveys and the built-in CRM can win you more boiler installs with a lot less admin.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="rounded-xl bg-slate-950 px-8 py-4 font-medium text-white">
+              <a
+                href="/contact"
+                className="rounded-xl bg-slate-950 px-8 py-4 font-medium text-white hover:bg-slate-900"
+              >
                 Book Your Demo
-              </button>
+              </a>
 
               <a
                 href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
