@@ -677,7 +677,9 @@ export default function Home() {
                 {[
                   { label: 'Google Ads', pct: 76 },
                   { label: 'Organic Website', pct: 52 },
-                  { label: 'Trade Initiative', pct: 24 },
+                  { label: 'Facebook', pct: 38 },
+                  { label: 'Boiler Guide', pct: 29 },
+                  { label: 'Instagram', pct: 18 },
                 ].map((row) => (
                   <div key={row.label}>
                     <div className="mb-1 flex justify-between text-xs text-slate-400">
