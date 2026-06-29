@@ -157,19 +157,21 @@ export default function Home() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
+                href="https://portal.relode.io/signup"
                 className="rounded-xl bg-blue-600 px-6 py-3 font-medium hover:bg-blue-500"
               >
-                Try The Quote Calculator
+                Try It Free For 14 Days
               </a>
 
               <a
-                href="/contact"
+                href="https://portal.relode.io/calculator?company_id=6578dad8-9e8a-4189-abf7-d578bda4af47"
                 className="rounded-xl border border-slate-700 px-6 py-3 font-medium hover:bg-slate-900"
               >
-                Book A Demo
+                See The Live Calculator
               </a>
             </div>
+
+            <p className="mt-4 text-sm text-slate-500">No card required. Stick it on your site tonight, see your first lead tomorrow.</p>
 
             <div className="mt-12 flex gap-10 text-sm text-slate-400">
               <div>
@@ -259,6 +261,55 @@ export default function Home() {
                       <span className="text-cyan-400">New Lead</span>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-28">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+              Built By An Engineer, Not A Tech Bloke
+            </div>
+
+            <h2 className="text-4xl font-bold leading-tight md:text-5xl">
+              I scaled a boiler installation business to £2m. Relode is the system I wish I'd had.
+            </h2>
+
+            <p className="mt-6 text-lg text-slate-400">
+              I lost a £3k install once because I couldn't ring a customer back until the morning — someone else had already quoted. That one job is the reason this exists. No agency, no marketer, no outsider guessing what a heating engineer's day looks like. Just the tool that stopped me chasing quotes at 9pm.
+            </p>
+
+            <p className="mt-4 text-lg text-slate-400">
+              If you're too busy on the tools to mess about with software, that's exactly why you need it — it works while you're on a job, or asleep.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="text-sm font-medium text-cyan-400">WHY ENGINEERS TRUST IT</div>
+            <div className="mt-6 space-y-5">
+              <div className="flex gap-4">
+                <div className="text-2xl">🔧</div>
+                <div>
+                  <div className="font-bold">Built from the trade, not for it</div>
+                  <div className="text-slate-400">Every feature solves a real problem from running an installation business at scale.</div>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="text-2xl">🚫</div>
+                <div>
+                  <div className="font-bold">No commission, ever</div>
+                  <div className="text-slate-400">Unlike Checkatrade-style leads, every enquiry is yours alone — nobody else gets to quote it.</div>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="text-2xl">🎓</div>
+                <div>
+                  <div className="font-bold">Coaching, not just software</div>
+                  <div className="text-slate-400">Relode Academy shares the pricing, ranking and service-plan scripts that took my business to £2m.</div>
                 </div>
               </div>
             </div>
@@ -464,9 +515,9 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10">
+            <div className="rounded-3xl border border-cyan-500/40 bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/10">
               <div className="mb-3 text-sm font-medium text-cyan-400">
-                RECURRING REVENUE
+                THE MONEY-MAKER
               </div>
 
               <h3 className="text-2xl font-bold">
@@ -474,7 +525,7 @@ export default function Home() {
               </h3>
 
               <p className="mt-4 text-slate-400">
-                Sell and renew annual service plans online with automated payments, so customers come back to you every year without you lifting a finger.
+                Sell and renew annual service plans online with automated Direct Debits, so customers come back every year without you lifting a finger. It's not a feature that costs you money — it's the one that pays for everything else.
               </p>
             </div>
 
@@ -829,6 +880,80 @@ export default function Home() {
             <p className="mt-4 text-slate-400">
               Customers stay on the books year after year with automated renewals and payments.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-28">
+        <div className="rounded-[32px] border border-cyan-500/20 bg-gradient-to-br from-slate-900 to-slate-950 p-12">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+                Stop Paying To Fight Over Leads
+              </div>
+              <h2 className="text-4xl font-bold leading-tight md:text-5xl">
+                Your own site. Your own leads. Nobody else gets the same enquiry.
+              </h2>
+              <p className="mt-6 text-lg text-slate-400">
+                Checkatrade and the lead-gen directories sell the same enquiry to five engineers, then watch you race to the bottom on price. Relode sits on your own website — every quote, every survey and every job is yours, with nobody else bidding against you.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="font-bold">No shared leads</div>
+                <div className="text-slate-400">One enquiry, one engineer — you.</div>
+              </div>
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="font-bold">No commission per job</div>
+                <div className="text-slate-400">A flat monthly fee, not a cut of every install.</div>
+              </div>
+              <div className="rounded-2xl bg-slate-800 p-5">
+                <div className="font-bold">No race to the bottom</div>
+                <div className="text-slate-400">You quote once, properly — not against four other vans.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+            Refer A Mate, Keep Learning
+          </div>
+          <h2 className="text-5xl font-bold">Grow with other engineers, not against them.</h2>
+          <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-400">
+            The trade trusts the trade. Bring in another engineer and you both win — and keep sharpening your business with the Academy.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-4 text-sm font-medium text-cyan-400">REFERRAL PROGRAMME</div>
+            <h3 className="text-3xl font-bold">Refer a mate, you both get a month free.</h3>
+            <p className="mt-4 text-slate-400">
+              Engineers trust other engineers more than any advert. Know someone who's still chasing quotes off the back of a van? Send them your link — when they sign up, you both get a month on the house.
+            </p>
+            <a
+              href="/contact"
+              className="mt-6 inline-block rounded-xl bg-cyan-500 px-6 py-3 font-medium text-slate-950 hover:bg-cyan-400"
+            >
+              Get Your Referral Link
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
+            <div className="mb-4 text-sm font-medium text-cyan-400">RELODE ACADEMY</div>
+            <h3 className="text-3xl font-bold">The scripts and pricing that built a £2m business.</h3>
+            <p className="mt-4 text-slate-400">
+              Short, no-nonsense modules on ranking locally, selling service plans, pricing jobs properly and turning reviews into leads — straight from someone who's actually done it, not a marketing agency guessing.
+            </p>
+            <a
+              href="/contact"
+              className="mt-6 inline-block rounded-xl border border-slate-700 px-6 py-3 font-medium hover:bg-slate-800"
+            >
+              Ask About Academy Access
+            </a>
           </div>
         </div>
       </section>
